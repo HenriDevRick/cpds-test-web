@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Scientist Quiz</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Data Scientist Quiz</h1>
+        <form method="POST">
+            {% for i, question in enumerate(questions) %}
+                <div class="question">
+                    <p><strong>Q{{ i + 1 }}:</strong> {{ question.question }}</p>
+                    {% for option in question.options %}
+                        <label>
+                            <input type="radio" name="q{{ i }}" value="{{ option }}">
+                            {{ option }}
+                        </label><br>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+            <button type="submit">Submit Quiz</button>
+        </form>
+    </div>
+</body>
+</html>
